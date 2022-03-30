@@ -1,0 +1,11 @@
+.container {
+  width: 100%;
+  background-color: #8b8c8f;
+  height: 200px;
+}
+
+.title {
+  margin-top: auto;
+  margin-bottom: auto;
+  font-family: hind, sans-serif;
+}
