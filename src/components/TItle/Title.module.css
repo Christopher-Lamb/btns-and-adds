@@ -1,11 +1,97 @@
-.container {
-  width: 100%;
-  background-color: #8b8c8f;
-  height: 200px;
+:root {
+  --background-title-color: rgb(136, 140, 141);
+  --background-title-lettering: rgba(136, 140, 141, 0.808);
 }
 
-.title {
-  margin-top: auto;
-  margin-bottom: auto;
+.container {
+  width: 100%;
+  background-color: var(--background-title-color);
+  min-height: 200px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  width: 255px;
+}
+
+/*  */
+.text1 {
   font-family: hind, sans-serif;
+  font-size: 60px;
+  background-color: rgba(0, 0, 0, 0.582);
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+  text-shadow: var(--background-title-lettering) -2px 2px 1.5px;
+}
+.secretBtnText {
+  background-clip: text;
+  color: white;
+  font-weight: 700;
+  text-shadow: black -2px 2px 1.5px;
+}
+
+@media (min-width: 576px) {
+  .wrapper {
+    width: 100%;
+  }
+  .text1 {
+    font-size: 80px;
+    text-shadow: var(--background-title-lettering) -2px 3px 3px;
+  }
+}
+
+@media (min-width: 768px) {
+  .text1 {
+    font-size: 80px;
+  }
+}
+
+@media (min-width: 992px) {
+  .text1 {
+    font-size: 80px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .text1 {
+    font-size: 100px;
+  }
+}
+
+.rainbow {
+  height: 200px;
+  width: 100%;
+  background: linear-gradient(
+      rgba(255, 0, 0, 1) 0%,
+      rgba(255, 154, 0, 1) 10%,
+      rgba(208, 222, 33, 1) 20%,
+      rgba(79, 220, 74, 1) 30%,
+      rgba(63, 218, 216, 1) 40%,
+      rgba(47, 201, 226, 1) 50%,
+      rgba(28, 127, 238, 1) 60%,
+      rgba(95, 21, 242, 1) 70%,
+      rgba(186, 12, 248, 1) 80%,
+      rgba(251, 7, 217, 1) 90%,
+      rgba(255, 0, 0, 1) 100%
+    )
+    0 0/100% 200%;
+  animation: a 2s linear infinite;
+}
+
+.whiteText {
+}
+
+@keyframes a {
+  to {
+    background-position: 0 -200%;
+  }
 }
