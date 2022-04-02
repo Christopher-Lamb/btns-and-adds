@@ -83,15 +83,21 @@
       rgba(251, 7, 217, 1) 90%,
       rgba(255, 0, 0, 1) 100%
     )
-    0 0/100% 200%;
-  animation: a 2s linear infinite;
+    0 0/100% 6400%;
+  animation: a 180s linear infinite;
 }
 
-.whiteText {
-}
+/* .whiteText {
+} */
 
 @keyframes a {
-  to {
-    background-position: 0 -200%;
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 0% 800%;
+  }
+  100% {
+    background-position: 0% 0%;
   }
 }
