@@ -5,7 +5,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50vh;
+  flex-wrap: wrap;
+
+
+  height: 100%;
 }
 
 @media (min-width: 576px) {

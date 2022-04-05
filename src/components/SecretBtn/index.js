@@ -19,7 +19,7 @@ export default function SecretBtn({ onClick }) {
       <div ref={btnRef} className={CSS.btnWrapper}>
         <div className={CSS.cover} />
         <button onClick={handleClick} class={CSS.pushable}>
-          <span class={CSS.btnFront}></span>
+          <span className={CSS.btnFront}></span>
         </button>
       </div>
     </>
