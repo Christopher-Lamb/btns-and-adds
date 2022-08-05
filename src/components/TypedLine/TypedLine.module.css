@@ -1,0 +1,54 @@
+:root {
+  --bg-color: white;
+  --type-speed: 2s;
+  --delay-of-animation: 5s;
+}
+
+.text {
+  position: relative;
+  font-family: monospace;
+}
+
+.text::before,
+.text::after {
+  content: "";
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: absolute;
+}
+
+
+
+.text::before {
+  background-color: var(--bg-color);
+  animation: typewriter var(--type-speed) steps(23) var(--delay-of-animation)
+    forwards;
+}
+
+.text::after {
+  width: 0.125rem;
+  background-color: black;
+  animation: typewriter var(--type-speed) steps(23) var(--delay-of-animation)
+      forwards,
+    start-blink steps(4, start) 1200ms 5, blink steps(4, start) 1200ms infinite 4s;
+}
+
+@keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes start-blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}

@@ -1,26 +1,140 @@
 import CSS from "./App.module.css";
 import Title from "./components/TItle";
-import Button from "./components/Buttons/Button";
-import { useEffect, useRef } from "react";
+import Button from "./components/Buttons/Button/Button";
+import { useEffect, useRef, useState } from "react";
+import useInterval from "./hooks/useInterval";
 // import Dice from "./components/Buttons/Dice";
+import Fail from "./components/Fail/Fail";
+import Check from "./components/Check/Check";
+import Counter from "./components/Counter/Counter";
+import GodTier from "./components/GodTier/GodTier";
+import Nice from "./components/Nice/Nice";
+import Start from "./components/TypedLine/TypedLine";
 
 function App() {
-  const getBtnDimensions = () => {
-    let screenWidth = window.screen.width * 0.8;
-    const containerWidth = screenWidth - 24;
-    const btnWidth = containerWidth / 4;
-    const btnHeight = btnWidth / 3.4;
-    // console.log(height, btnWidth, marginSides);
-    return Array(4).fill(
-      <Button height={btnHeight} width={btnWidth} marginSides={3} />
-    );
+  const count = useRef(0);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const checkColor = useRef("");
+  const [isFail, setIsFail] = useState();
+  const [countSwitch, setCountSwitch] = useState(true);
+  const [isGameOver, setIsGameOver] = useState(false);
+
+  const handleClick = async () => {
+    // runTest(range);
+    if (!isGameOver) {
+      let result = await game();
+      if (result) {
+        //If win
+        setIsFail(false);
+        setIsSuccess(true);
+        setIsGameOver(true);
+      } else if (!result) {
+        //If Fail
+        if (!isGameOver) {
+          // setIsSuccess(false);
+          setIsFail(false);
+          setIsFail(true);
+        }
+      }
+    } else {
+      setCountSwitch(false);
+      setCountSwitch(true);
+    }
+  };
+
+  const game = async () => {
+    //increment
+    await setCountSwitch(false);
+    await setCountSwitch(true);
+    count.current = count.current + 1;
+
+    let rand1 = 0;
+    let rand2 = 0;
+    const range = await getRange(count.current);
+
+    checkColor.current = await getColor(count.current);
+    rand1 = await getRandom(range);
+    rand2 = await getRandom(range);
+
+    const result = await getResult(rand1, rand2);
+
+    return result;
+  };
+
+  const getResult = (num1, num2) => {
+    //If num1 and 2 are === true
+    if (num1 === num2) {
+      //Win
+      return true;
+    } else {
+      //False
+      return false;
+    }
+  };
+
+  const getRange = (count) => {
+    //Takes a Count and returns a range
+    let range = 0;
+    //Count is off by one therefore < actually is <=
+    if (count <= 10) {
+      //Gold 1% 10
+      range = 1000;
+    } else if (count <= 50) {
+      //Purple 8% 40
+      range = 500;
+    } else if (count <= 100) {
+      //Blue 27% 50
+      range = 277;
+    } else if (count <= 150) {
+      //Green 64% 50
+      range = 78;
+    } else if (count <= 200) {
+      //Orange 125% 100
+      range = 40;
+    } else {
+      range = 36;
+    }
+
+    return range;
+  };
+
+  const getColor = (count) => {
+    let color = "";
+    if (count <= 10) {
+      color = "gold";
+    } else if (count <= 50) {
+      color = "purple";
+    } else if (count === 68) {
+      color = "nice";
+    } else if (count <= 100) {
+      color = "blue";
+    } else if (count <= 150) {
+      color = "green";
+    } else if (count <= 200) {
+      color = "orange";
+    } else if (count >= 350) {
+      color = "god";
+    } else {
+      color = "red";
+    }
+    return color;
+  };
+
+  const getRandom = (max) => {
+    return Math.floor(Math.random() * max);
   };
 
   return (
-    <>
-      <Title>Love 4 Buttons</Title>
-      <div className={CSS.container}>{getBtnDimensions()}</div>
-    </>
+    <div className={CSS.container}>
+      {/* <button style={{ position: "fixed", top: "0px" }} onClick={runTest}>
+        Test
+      </button> */}
+      {/* {isFail && <Fail />} */}
+      {/* {isSuccess && <Check color={checkColor.current} />} */}
+      {/* <Button onClick={handleClick} /> */}
+      {/* {countSwitch && <Counter>{count.current}</Counter>} */}
+      <Start />
+    </div>
   );
 }
 
