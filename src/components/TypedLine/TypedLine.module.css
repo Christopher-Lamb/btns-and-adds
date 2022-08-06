@@ -7,6 +7,7 @@
 .text {
   position: relative;
   font-family: monospace;
+  width: max-content;
 }
 
 .text::before,
@@ -19,8 +20,6 @@
   position: absolute;
 }
 
-
-
 .text::before {
   background-color: var(--bg-color);
   animation: typewriter var(--type-speed) steps(23) var(--delay-of-animation)
@@ -28,11 +27,12 @@
 }
 
 .text::after {
-  width: 0.125rem;
+  width: 0.125em;
   background-color: black;
   animation: typewriter var(--type-speed) steps(23) var(--delay-of-animation)
       forwards,
-    start-blink steps(4, start) 1200ms 5, blink steps(4, start) 1200ms infinite 4s;
+    start-blink steps(4, start) 1200ms 4,
+    blink steps(4, start) 1200ms 2 7s forwards;
 }
 
 @keyframes typewriter {

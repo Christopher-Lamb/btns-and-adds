@@ -20,13 +20,15 @@
 .scene {
   z-index: -1;
   /* font-size: 8px; */
-  position: fixed;
-  width: 80em;
-  height: 40em;
+  position: absolute;
+  top: -120px;
+
+  /* width: 80em;
+  height: 40em; */
   /* top: 50%;
   left: 50%; */
-  top: 65vh;
-  margin: -40em 0 0 -40em;
+  /* top: 65vh; */
+  /* margin: -40em 0 0 -40em; */
   -webkit-transform: rotateX(0deg) rotateY(341deg);
   -moz-transform: rotateX(0deg) rotateY(341deg);
   -ms-transform: rotateX(0deg) rotateY(341deg);

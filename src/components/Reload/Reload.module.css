@@ -1,106 +1,77 @@
-:root {
-  --btn-height: 6.25rem;
-  --btn-width: 8rem;
-  --btn-border-radius: 48%;
-  --btn-ratio: 25px;
-}
-
 .container {
   position: relative;
-  height: 0px;
-  top: calc(60vh - 100px);
+  top: 14.125rem;
+  left: 6.938rem;
 }
-
 .pushable {
   position: absolute;
-  left: -128px;
   border: none;
   background: transparent;
   padding: 0;
   cursor: pointer;
   outline-offset: 4px;
   transition: filter 250ms;
-  -webkit-tap-highlight-color: transparent;
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 .shadow {
   position: absolute;
   top: 0;
   left: 0;
-  width: 16rem;
-  height: 12.5rem;
-  border-radius: 48%;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
   background: hsl(0deg 0% 0% / 0.25);
   will-change: transform;
-  /* 2 to 17 */
-  transform: translateY(23px);
+  transform: translateY(6px);
   transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
-  filter: blur(1px);
 }
 .edge {
   position: absolute;
   top: 0;
   left: 0;
-  width: 16rem;
-  height: 12.5rem;
-  border-radius: 48%;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
   background: linear-gradient(
     to left,
-    rgb(100, 0, 5) 0%,
-    rgb(160, 0, 10) 8%,
-    rgb(160, 0, 10) 92%,
-    rgb(100, 0, 5) 100%
+    #002e5b 0%,
+    #0160be 8%,
+    #0160be 92%,
+    #002e5b 100%
   );
 }
 .front {
-  display: block;
+  display: flex;
   position: relative;
-  /* padding: 3.125rem 4rem; */
-  padding: 100px 128px;
-  border-radius: 48%;
+  padding: 13px 16px;
+  border-radius: 12px;
   font-size: 1.25rem;
   color: white;
-  /* background: rgb(240, 0, 60); */
-  background-color: rgb(210, 0, 0);
+  background: #007bf7;
   will-change: transform;
-  /* -4 to -20  */
-  transform: translateY(-20px);
+  transform: translateY(-8px);
   transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
 }
 .pushable:hover {
   filter: brightness(110%);
 }
 .pushable:hover .front {
-  /* from -6 to -22 */
-  transform: translateY(-22px);
+  transform: translateY(-8px);
   transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
 }
 .pushable:active .front {
-  /* from -2 to -13 */
-  transform: translateY(-13px);
+  transform: translateY(-2px);
   transition: transform 34ms;
 }
 .pushable:hover .shadow {
-  /* 4 to 25 */
-  transform: translateY(23px);
+  transform: translateY(6px);
   transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
 }
 .pushable:active .shadow {
-  /* from 1 to  12 */
-  transform: translateY(12px);
+  transform: translateY(1px);
   transition: transform 34ms;
 }
 .pushable:focus:not(:focus-visible) {
   outline: none;
-}
-@media (min-width: 576px) {
-}
-
-@media (min-width: 768px) {
-}
-
-@media (min-width: 992px) {
-}
-
-@media (min-width: 1200px) {
 }

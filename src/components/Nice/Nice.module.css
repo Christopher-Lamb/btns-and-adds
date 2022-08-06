@@ -18,13 +18,10 @@
   transform-style: preserve-3d;
 }
 .scene {
-  z-index: 100;
+  z-index: 1;
+  position: absolute;
   font-size: 15px;
-  width: 80em;
-  height: 40em;
-  top:65vh;
-  left: 50%;
-  margin: -40em 0 0 -40em;
+  top: -120px;
   -webkit-transform: rotateX(360deg) rotateY(90deg);
   -moz-transform: rotateX(360deg) rotateY(90deg);
   -ms-transform: rotateX(360deg) rotateY(90deg);
@@ -34,10 +31,18 @@
 
 @keyframes spin {
   0% {
-    transform: rotateY(341deg);
+    transform: rotateY(341deg) rotateX(5deg);
   }
   100% {
-    transform: rotateY(-19deg);
+    transform: rotateY(-19deg) rotateX(5deg);
+  }
+}
+@keyframes rot {
+  0% {
+    transform: rotateX(341deg);
+  }
+  100% {
+    transform: rotateX(-19deg);
   }
 }
 

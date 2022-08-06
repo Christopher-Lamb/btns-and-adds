@@ -1,5 +1,19 @@
 .container {
+  position: relative;
+}
+.counter {
+  font-family: "Ubuntu Mono", monospace;
+  font-weight: 600;
   position: absolute;
-  top: 80vh;
+  top: 15rem;
+  /* left: 0px; */
   color: black;
+}
+
+.double {
+  left: -0.75rem;
+}
+
+.triple {
+  left: -1.25rem;
 }

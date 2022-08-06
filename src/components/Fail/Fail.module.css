@@ -1,7 +1,7 @@
 /* /!\ You need to add vendor prefixes in order to render the CSS properly (or simply use http://leaverou.github.io/prefixfree/) /!\ */
 #fail {
   perspective: 800px;
-  position: absolute;
+  position: relative;
   overflow: hidden;
   width: 100%;
   height: 100%;
@@ -18,14 +18,15 @@
 }
 .scene {
   z-index: -1;
-  position: fixed;
+  position: absolute;
   font-size: 14px;
-  width: 80em;
-  height: 40em;
+  top: -120px;
+  /* width: 80em;
+  height: 80em; */
   /* 62vh */
-  top: 65vh;
+  /* transform: translateY(25px); */
   /* left: 50%; */
-  margin: -40em 0 0 -40em;
+  /* margin: -40em 0 0 -40em; */
   transform: rotateX(355deg) rotateY(337deg);
   animation: spin 2s infinite linear;
 }

@@ -10,6 +10,8 @@ import Counter from "./components/Counter/Counter";
 import GodTier from "./components/GodTier/GodTier";
 import Nice from "./components/Nice/Nice";
 import Start from "./components/TypedLine/TypedLine";
+import Intro from "./components/Intro/Intro";
+import Reload from "./components/Reload/Reload";
 
 function App() {
   const count = useRef(0);
@@ -17,20 +19,21 @@ function App() {
   const checkColor = useRef("");
   const [isFail, setIsFail] = useState();
   const [countSwitch, setCountSwitch] = useState(true);
-  const [isGameOver, setIsGameOver] = useState(false);
+  const isGameOver = useRef(false);
+  const [isIntro, setIsIntro] = useState(true);
 
   const handleClick = async () => {
     // runTest(range);
-    if (!isGameOver) {
+    if (!isGameOver.current) {
       let result = await game();
       if (result) {
         //If win
         setIsFail(false);
         setIsSuccess(true);
-        setIsGameOver(true);
+        isGameOver.current = true;
       } else if (!result) {
         //If Fail
-        if (!isGameOver) {
+        if (!isGameOver.current) {
           // setIsSuccess(false);
           setIsFail(false);
           setIsFail(true);
@@ -57,7 +60,6 @@ function App() {
     rand2 = await getRandom(range);
 
     const result = await getResult(rand1, rand2);
-
     return result;
   };
 
@@ -104,7 +106,7 @@ function App() {
       color = "gold";
     } else if (count <= 50) {
       color = "purple";
-    } else if (count === 68) {
+    } else if (count === 69) {
       color = "nice";
     } else if (count <= 100) {
       color = "blue";
@@ -124,16 +126,34 @@ function App() {
     return Math.floor(Math.random() * max);
   };
 
+  const handleIntroClose = () => {
+    setIsIntro(false);
+  };
+
+  const handleReload = () => {
+    setIsFail(false);
+    setIsSuccess(false);
+    count.current = 0;
+    checkColor.current = "";
+    setIsIntro(false);
+    isGameOver.current = false;
+  };
+
   return (
     <div className={CSS.container}>
       {/* <button style={{ position: "fixed", top: "0px" }} onClick={runTest}>
         Test
       </button> */}
-      {/* {isFail && <Fail />} */}
-      {/* {isSuccess && <Check color={checkColor.current} />} */}
-      {/* <Button onClick={handleClick} /> */}
-      {/* {countSwitch && <Counter>{count.current}</Counter>} */}
-      <Start />
+
+      <Button onClick={handleClick}>
+        {isFail && <Fail />}
+        {isSuccess && <Check color={checkColor.current} />}
+        {countSwitch && <Counter>{count.current}</Counter>}
+        {isIntro && <Intro onClose={handleIntroClose} />}
+        <Reload onClick={handleReload} />
+      </Button>
+
+      {/* <Start /> */}
     </div>
   );
 }

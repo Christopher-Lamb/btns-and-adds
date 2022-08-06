@@ -84,9 +84,9 @@ export default function Check({ color, top, font, left, name }) {
           <div
             className={CSS.scene}
             style={{
-              top: `${top}vh`,
+              top: `${top}px`,
               fontSize: `${font}px`,
-              left: `${left}vw`,
+              left: `${left}px`,
             }}
 
             // style="-webkit-transform:rotateX(-1deg) rotateY(-3577deg); -moz-transform:rotateX(-1deg) rotateY(-3577deg); -ms-transform:rotateX(-1deg) rotateY(-3577deg); transform:rotateX(-1deg) rotateY(-3577deg); "
